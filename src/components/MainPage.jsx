@@ -79,7 +79,7 @@ const MainPage = () => {
     setChartData(months);
   };
 
-  const handleSubmit = (e) => {
+ const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.amount || parseFloat(formData.amount) <= 0) {
       alert("Please enter a valid amount");
@@ -93,13 +93,15 @@ const MainPage = () => {
     });
 
     loadData();
+    
+    // ** FIX: Keep the existing type and category when resetting the form **
     setFormData({
-      type: "expense",
-      amount: "",
-      category: "groceries",
-      description: "",
-      date: new Date().toISOString().split("T")[0],
+      ...formData, // This will retain the previous values
+      amount: "", // Only clear the amount
+      description: "", // And the description
+      date: new Date().toISOString().split("T")[0], // Reset the date to today
     });
+
     setIsFormOpen(false);
   };
 
