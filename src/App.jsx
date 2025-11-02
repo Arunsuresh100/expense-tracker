@@ -6,10 +6,7 @@ import MainPage from './components/MainPage'
 import { storageService } from './services/storageService'
 
 function App() {
-  useEffect(() => {
-    // Initialize sample data if no data exists
-    storageService.initSampleData()
-  }, [])
+ 
 
   return (
     <ThemeProvider>
